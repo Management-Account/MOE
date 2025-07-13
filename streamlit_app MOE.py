@@ -8,7 +8,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Main app structure
-st.title("VP Registration (Construction)")
+st.title("MOE Registration")
 
 # Important Note and Caution
 st.warning("""
@@ -34,7 +34,7 @@ credentials = service_account.Credentials.from_service_account_info(
 gc = gspread.authorize(credentials)
 
 # Open the specific Google Sheet
-sheet = gc.open_by_key(st.secrets["SHEET_ID"]).worksheet("SvS Prep Ministry Buffs")
+sheet = gc.open_by_key(st.secrets["SHEET_ID"]).worksheet("MOE BUFF")
 
 # Registration Form
 with st.form("registration_form"):
@@ -66,21 +66,15 @@ with st.form("registration_form"):
         value=0
     )
     
-    building_speedups = st.number_input(
-        "How many Building Speedups do you have (In Days)?*",
+    training_speedups = st.number_input(
+        "How many Training Speedups do you have (In Days)?*",
         min_value=0,
         step=1,
         value=0
     )
     
 
-    
-    fc_count = st.number_input(
-        "How many FCs do you have?*",
-        min_value=0,
-        step=1,
-        value=0
-    )
+
     
     # Preferred timing for ministry buff
     buff_timing = st.selectbox(
@@ -118,8 +112,7 @@ with st.form("registration_form"):
                 alliance,
                 fc_level,
                 general_speedups,
-                building_speedups,
-                fc_count,
+                training_speedups,
                 buff_timing
             ]
             
