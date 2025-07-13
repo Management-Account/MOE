@@ -8,7 +8,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Main app structure
-st.title("MOE Registration")
+st.title("2089 MOE Registration")
 
 # Important Note and Caution
 st.warning("""
