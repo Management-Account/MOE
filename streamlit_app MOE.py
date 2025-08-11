@@ -36,6 +36,22 @@ gc = gspread.authorize(credentials)
 # Open the specific Google Sheet
 sheet = gc.open_by_key(st.secrets["SHEET_ID"]).worksheet("MOE BUFF")
 
+# Time slot options
+time_slots = [
+    "00:00 UTC to 02:00 UTC",
+    "02:00 UTC to 04:00 UTC",
+    "04:00 UTC to 06:00 UTC",
+    "06:00 UTC to 08:00 UTC",
+    "08:00 UTC to 10:00 UTC",
+    "10:00 UTC to 12:00 UTC",
+    "12:00 UTC to 14:00 UTC",
+    "14:00 UTC to 16:00 UTC",
+    "16:00 UTC to 18:00 UTC",
+    "18:00 UTC to 20:00 UTC",
+    "20:00 UTC to 22:00 UTC",
+    "22:00 UTC to 23:59 UTC"
+]
+
 # Registration Form
 with st.form("registration_form"):
     # Player Information
@@ -48,7 +64,6 @@ with st.form("registration_form"):
         ["TCW", "MRA", "FOX", "SHR" ,"MMD", "CCB" , "EFE" ],
         index=0
     )
-    
     
     # FC Level
     fc_level = st.selectbox(
@@ -73,51 +88,20 @@ with st.form("registration_form"):
         value=0
     )
     
-
-
-    
     # Preferred timing for ministry buff
     buff_timing = st.selectbox(
         "What is your Preferred time zone For ministry Buff?*",
-        [
-            "00:00 UTC to 02:00 UTC",
-            "02:00 UTC to 04:00 UTC",
-            "04:00 UTC to 06:00 UTC",
-            "06:00 UTC to 08:00 UTC",
-            "08:00 UTC to 10:00 UTC",
-            "10:00 UTC to 12:00 UTC",
-            "12:00 UTC to 14:00 UTC",
-            "14:00 UTC to 16:00 UTC",
-            "16:00 UTC to 18:00 UTC",
-            "18:00 UTC to 20:00 UTC",
-            "20:00 UTC to 22:00 UTC",
-            "22:00 UTC to 23:59 UTC"
-        ],
+        time_slots,
         index=0
     )
 
- # Preferred timing for ministry buff
-    alt_buff_timing = st.selectbox(
-        "What is your Alt timing ?*",
-        [
-            "00:00 UTC to 02:00 UTC",
-            "02:00 UTC to 04:00 UTC",
-            "04:00 UTC to 06:00 UTC",
-            "06:00 UTC to 08:00 UTC",
-            "08:00 UTC to 10:00 UTC",
-            "10:00 UTC to 12:00 UTC",
-            "12:00 UTC to 14:00 UTC",
-            "14:00 UTC to 16:00 UTC",
-            "16:00 UTC to 18:00 UTC",
-            "18:00 UTC to 20:00 UTC",
-            "20:00 UTC to 22:00 UTC",
-            "22:00 UTC to 23:59 UTC"
-        ],
-        index=0
+    # Preferred alternative timings (multiple selection)
+    alt_buff_timings = st.multiselect(
+        "What are your Alternative preferred timings? (Select all that apply)",
+        time_slots,
+        default=[time_slots[1]]  # Default to second option
     )
 
-
-    
     # Submit Button
     submitted = st.form_submit_button("Submit Registration")
     
@@ -127,6 +111,9 @@ with st.form("registration_form"):
         else:
             # Prepare the data row
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # Join multiple alt timings with comma separator
+            alt_timings_str = ", ".join(alt_buff_timings) if alt_buff_timings else "None"
+            
             new_row = [
                 timestamp,
                 player_name,
@@ -136,7 +123,7 @@ with st.form("registration_form"):
                 general_speedups,
                 training_speedups,
                 buff_timing,
-                alt_buff_timing
+                alt_timings_str  # This now contains all selected alt timings
             ]
             
             try:
@@ -146,11 +133,3 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
-
-
-
-
-
-
-
-
