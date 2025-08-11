@@ -95,6 +95,28 @@ with st.form("registration_form"):
         ],
         index=0
     )
+
+ # Preferred timing for ministry buff
+    alt_buff_timing = st.selectbox(
+        "What is your Alt timing ?*",
+        [
+            "00:00 UTC to 02:00 UTC",
+            "02:00 UTC to 04:00 UTC",
+            "04:00 UTC to 06:00 UTC",
+            "06:00 UTC to 08:00 UTC",
+            "08:00 UTC to 10:00 UTC",
+            "10:00 UTC to 12:00 UTC",
+            "12:00 UTC to 14:00 UTC",
+            "14:00 UTC to 16:00 UTC",
+            "16:00 UTC to 18:00 UTC",
+            "18:00 UTC to 20:00 UTC",
+            "20:00 UTC to 22:00 UTC",
+            "22:00 UTC to 23:59 UTC"
+        ],
+        index=0
+    )
+
+
     
     # Submit Button
     submitted = st.form_submit_button("Submit Registration")
@@ -113,7 +135,8 @@ with st.form("registration_form"):
                 fc_level,
                 general_speedups,
                 training_speedups,
-                buff_timing
+                buff_timing,
+                alt_buff_timing
             ]
             
             try:
@@ -123,6 +146,7 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
+
 
 
 
