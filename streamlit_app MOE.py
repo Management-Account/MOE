@@ -13,9 +13,9 @@ st.title("2089 MOE Registration")
 # Important Note and Caution
 st.warning("""
 **State buffs plan**  
-14-July Monday: Construction  
-17-June Thursday: Training  
-18-June Friday: Research  
+11-Aug Monday: Construction
+14-Aug Thursday: Training
+15-Aug Friday: Research 
 """)
 
 st.error("""
@@ -123,3 +123,4 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
+
