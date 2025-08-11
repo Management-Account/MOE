@@ -45,7 +45,7 @@ with st.form("registration_form"):
     # Alliance Selection
     alliance = st.selectbox(
         "What is Your Alliance?*",
-        ["TCW", "MRA", "FOX", "SHR" ,"mra", "CCB" , "RFA" , "GoR" , "DIU"],
+        ["TCW", "MRA", "FOX", "SHR" ,"MMD", "CCB" , "EFE" ],
         index=0
     )
     
@@ -123,6 +123,7 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
+
 
 
 
