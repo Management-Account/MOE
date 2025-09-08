@@ -13,9 +13,10 @@ st.title("2089 MOE Registration")
 # Important Note and Caution
 st.warning("""
 **State buffs plan**  
-11-Aug Monday: Construction  
-14-Aug Thursday: Training  
-15-Aug Friday: Research  
+8-Sep Monday : Construction                 
+9-Sep Tuesday : Research  
+11-Sep Thursday: Training  
+  
 """)
 
 st.error("""
@@ -61,7 +62,7 @@ with st.form("registration_form"):
     # Alliance Selection
     alliance = st.selectbox(
         "What is Your Alliance?*",
-        ["TCW", "MRA", "FOX", "SHR" ,"MMD", "CCB" , "EFE" ],
+        ["TCW", "EFE", "MRA", "FOX" ,"SHR", "MMD" ],
         index=0
     )
     
@@ -133,3 +134,4 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
+
