@@ -23,7 +23,7 @@ st.error("""
 **CAUTION:**  
 - Resource Preparation: Ensure you have sufficient resources to fully maximize your score  
 - Fair Participation: Scores will be actively monitored. If you are assigned the buff, please contribute fairly to maintain equity for all participants. Your cooperation is greatly appreciated  
-- **Registration Deadline: Registration closes at 12:00 UTC on 13th July**  
+- **Registration Deadline: Registration closes at 12:00 UTC on 8th October**  
 """)
 
 
