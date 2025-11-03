@@ -13,9 +13,9 @@ st.title("2089 MOE Registration")
 # Important Note and Caution
 st.warning("""
 **State buffs plan**  
-6-Oct Monday : Construction                 
-7-Oct Tuesday : Research  
-9-Oct Thursday: Training  
+Day 1 : Mercantilism +10% Construction speed                 
+Day 2 : Research Advancement +10% Research Speed  
+Day 4 : Mobilize +30% Training Speed  
   
 """)
 
@@ -23,7 +23,7 @@ st.error("""
 **CAUTION:**  
 - Resource Preparation: Ensure you have sufficient resources to fully maximize your score  
 - Fair Participation: Scores will be actively monitored. If you are assigned the buff, please contribute fairly to maintain equity for all participants. Your cooperation is greatly appreciated  
-- **Registration Deadline: Registration closes at 12:00 UTC on 8th October**  
+- **All submissions must be received by 12:00 UTC on the day prior.**  
 """)
 
 
@@ -134,5 +134,6 @@ with st.form("registration_form"):
                 st.balloons()
             except Exception as e:
                 st.error(f"Failed to save data: {str(e)}")
+
 
 
